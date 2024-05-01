@@ -1,0 +1,77 @@
+# Documentación del Plugin de Chat para WordPress
+
+## Descripción
+
+El plugin de Chat para WordPress es una herramienta que permite manejar conversaciones entre usuarios dentro de un sitio web creado con WordPress. Proporciona una interfaz de programación de aplicaciones (API) RESTful para realizar operaciones como enviar mensajes, obtener listas de chats y más.
+
+## Instalación
+
+1. Descarga el archivo del plugin desde la fuente deseada.
+2. Sube el archivo del plugin al directorio `/wp-content/plugins/` de tu instalación de WordPress.
+3. Activa el plugin a través de la página "Plugins" en el panel de administración de WordPress.
+
+## Uso
+
+El plugin proporciona varias rutas REST para interactuar con el sistema de chat. Estas rutas se pueden acceder a través de solicitudes HTTP utilizando las herramientas adecuadas, como cURL o bibliotecas de cliente para su lenguaje de programación preferido.
+
+### Rutas Disponibles
+
+- **Obtener lista de chats**: Permite obtener una lista de chats para un usuario específico.
+  - Ruta: `GET /wp-json/chat/v1/chatslist`
+  - Parámetros:
+    - `user_id`: El ID del usuario para el que se desea obtener la lista de chats.
+  - Respuesta:
+    - Devuelve una lista de chats, cada uno con información sobre el último mensaje, participantes, etc.
+
+- **Enviar mensaje a un usuario**: Permite enviar un mensaje a otro usuario.
+  - Ruta: `POST /wp-json/chat/v1/send-message`
+  - Parámetros:
+    - `sender_id`: El ID del usuario que envía el mensaje.
+    - `receiver_id`: El ID del usuario que recibe el mensaje.
+    - `message`: El contenido del mensaje a enviar.
+  - Respuesta:
+    - Devuelve el ID del mensaje y el ID del hilo al que pertenece.
+
+- **Enviar mensaje a un hilo existente**: Permite enviar un mensaje a un hilo de chat existente.
+  - Ruta: `POST /wp-json/chat/v1/send-message-thread`
+  - Parámetros:
+    - `thread_id`: El ID del hilo al que se enviará el mensaje.
+    - `sender_id`: El ID del usuario que envía el mensaje.
+    - `message`: El contenido del mensaje a enviar.
+  - Respuesta:
+    - Devuelve el ID del mensaje enviado.
+
+- **Obtener mensajes de un hilo de chat**: Permite obtener todos los mensajes de un hilo de chat específico.
+  - Ruta: `GET /wp-json/chat/v1/single-chat`
+  - Parámetros:
+    - `thread_id`: El ID del hilo del que se desean obtener los mensajes.
+  - Respuesta:
+    - Devuelve una lista de mensajes dentro del hilo especificado.
+
+## Seguridad
+
+El plugin implementa un sistema básico de autenticación basado en un encabezado de autorización. Se recomienda encarecidamente fortalecer este sistema de autenticación en un entorno de producción para garantizar la seguridad de las conversaciones de chat. Consulte la sección "Mejoras de seguridad" para obtener más detalles sobre cómo mejorar la seguridad del plugin.
+
+## Mejoras de seguridad
+
+Para mejorar la seguridad del sistema de chat, se recomienda implementar un sistema de autenticación más robusto, como JSON Web Tokens (JWT) o OAuth. Esto proporcionará una autenticación más segura y escalable para los usuarios del sistema.
+
+## Autor
+
+Leonardo Perez - Desarrollador de Software
+
+## Versión
+
+1.0
+
+## Fecha de última actualización
+
+30/04/2024
+
+## Licencia
+
+Este plugin está licenciado bajo Licencia Premium. 
+
+---
+
+Esta documentación proporciona una visión general del plugin, sus características, cómo instalarlo y usarlo, así como recomendaciones para mejorar la seguridad y otros detalles importantes. Si necesitas más detalles sobre alguna parte específica del código o alguna funcionalidad en particular, no dudes en pedirlo.
