@@ -63,9 +63,11 @@ function send_message_callback( WP_REST_Request $request ) {
 
     // Devolver una respuesta con el ID del mensaje
     return array(
-        'message_id' => $message_id,
-        'thread_id' => $thread_id,
-        'status' => 'Mensaje enviado exitosamente.',
+        array(
+            'message_id' => $message_id,
+            'thread_id' => $thread_id,
+            'status' => 'Mensaje enviado exitosamente.',
+        )
     );
 }
 ?>
