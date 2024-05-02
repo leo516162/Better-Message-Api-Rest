@@ -26,7 +26,7 @@ function lista_de_chats_callback($data) {
         LEFT JOIN qyl_bm_message_messages m ON r.thread_id = m.thread_id
         WHERE r.user_id = %d -- Filtrar por el user_id proporcionado
         GROUP BY r.thread_id
-        ORDER BY m.date_sent DESC
+        ORDER BY m.date_sent DESC 
         
     ", $user_id_solicitud);
 
