@@ -45,4 +45,5 @@ function register_send_message_thread_api_route() {
     ));
 }
 add_action('rest_api_init', 'register_send_message_thread_api_route');
+
 ?>
